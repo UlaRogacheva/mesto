@@ -1,0 +1,16 @@
+.footer__logo {
+  margin: 0;
+  padding: 69px 0 60px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+}
+
+@media screen and (max-width: 900px) {
+  .footer__logo {
+    padding: 50px 19px 36px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
