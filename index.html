@@ -37,7 +37,7 @@
             />
             <div class="element__content">
               <h2 class="element__title">Карачаевск</h2>
-              <button class="element__button"></button>
+              <button type="button" class="element__button"></button>
             </div>
           </div>
           <div class="element">
@@ -48,7 +48,7 @@
             />
             <div class="element__content">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__button"></button>
+              <button type="button" class="element__button"></button>
             </div>
           </div>
           <div class="element">
@@ -59,7 +59,7 @@
             />
             <div class="element__content">
               <h2 class="element__title">Домбай</h2>
-              <button class="element__button"></button>
+              <button type="button" class="element__button"></button>
             </div>
           </div>
           <div class="element">
@@ -70,7 +70,7 @@
             />
             <div class="element__content">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__button"></button>
+              <button type="button" class="element__button"></button>
             </div>
           </div>
           <div class="element">
@@ -81,7 +81,7 @@
             />
             <div class="element__content">
               <h2 class="element__title">Домбай</h2>
-              <button class="element__button"></button>
+              <button type="button" class="element__button"></button>
             </div>
           </div>
           <div class="element">
@@ -92,32 +92,33 @@
             />
             <div class="element__content">
               <h2 class="element__title">Карачаево-Черкесия</h2>
-              <button class="element__button"></button>
+              <button type="button" class="element__button"></button>
             </div>
           </div>
         </div>
       </section>
-      <footer class="footer">
-        <p class="footer__logo">&#169; 2020 Mesto Russia</p>
-      </footer>
-      <section class="popup popup_type-edit">
-        <div class="popup__container">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form">
-            <input
-              name="name"
-              class="popup__form-input popup__form-input_name"
-            />
-            <input
-              name="prof"
-              class="popup__form-input popup__form-input_prof"
-            />
-            <button type="submit" class="popup__button">Сохранить</button>
-            <button type="button" class="popup__close"></button>
-          </form>
-        </div>
-      </section>
     </main>
-    <script src="./script.js" defer></script>
+    <footer class="footer">
+      <p class="footer__logo">&#169; 2020 Mesto Russia</p>
+    </footer>
+    <section class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="editForm">
+          <input
+            name="name"
+            class="popup__form-input popup__form-input_type_name"
+          />
+          <input
+            name="prof"
+            class="popup__form-input popup__form-input_type_prof"
+          />
+          <button type="submit" class="popup__button">Сохранить</button>
+          <button type="button" class="popup__close"></button>
+        </form>
+      </div>
+    </section>
+
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>
