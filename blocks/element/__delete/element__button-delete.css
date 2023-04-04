@@ -10,7 +10,6 @@
   position: absolute;
   background-size: contain;
   background-position: center;
-  cursor: pointer;
   opacity: 1;
   transition: opacity 0.3s linear;
 }
