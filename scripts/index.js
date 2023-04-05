@@ -3,21 +3,25 @@ import { initialCards } from "./cards.js";
 // popup_profile
 const buttonEdit = document.querySelector(".profile__button-edit");
 const editPopup = document.querySelector(".popup_profile");
-const closePopupButton = editPopup.querySelector(".popup__close");
-const nameInput = editPopup.querySelector(".popup__form-input_type_name");
-const jobInput = editPopup.querySelector(".popup__form-input_type_prof");
-const popupSubmit = editPopup.querySelector(".popup__button");
-const formElement = editPopup.querySelector(".popup__form_profile");
+const closeButtons = document.querySelectorAll(".popup__close");
+const profileNameInput = editPopup.querySelector(
+  ".popup__form-input_type_name"
+);
+const profileJobInput = editPopup.querySelector(".popup__form-input_type_prof");
+const profilePopupSubmit = editPopup.querySelector(".popup__button");
+const profileFormElement = editPopup.querySelector(".popup__form_profile");
 const profileName = document.querySelector(".profile-info__name");
 const profileSubtitle = document.querySelector(".profile-info__subtitle");
 
 // popup_image
 const buttonAdd = document.querySelector(".profile__button-add");
 const addPopup = document.querySelector(".popup_image");
-const closePopupAddButton = addPopup.querySelector(".popup__close");
-const addFormImg = document.querySelector(".popup__form_image");
-const nameInputAdd = addFormImg.querySelector(".popup__form-input_type_image");
-const linkInputAdd = addFormImg.querySelector(".popup__form-input_type_link");
+const cardCloseButton = addPopup.querySelector(".popup__close");
+const cardFormImg = document.forms["cardForm"];
+const cardNameInput = cardFormImg.querySelector(
+  ".popup__form-input_type_image"
+);
+const cardLinkInput = cardFormImg.querySelector(".popup__form-input_type_link");
 
 // popup-picture
 const picturePopup = document.querySelector(".popup-picture");
@@ -34,35 +38,33 @@ function closePopup(popup) {
   popup.classList.remove("popup_open");
 }
 
+closeButtons.forEach((button) => {
+  const popup = button.closest(".popup");
+  button.addEventListener("click", () => closePopup(popup));
+});
+
 buttonEdit.addEventListener("click", () => {
   openPopup(editPopup);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileSubtitle.textContent;
+  profileNameInput.value = profileName.textContent;
+  profileJobInput.value = profileSubtitle.textContent;
 });
 
-closePopupButton.addEventListener("click", () => {
-  closePopup(editPopup);
-});
-
-formElement.addEventListener("submit", (event) => {
+profileFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileSubtitle.textContent = jobInput.value;
+  profileName.textContent = profileNameInput.value;
+  profileSubtitle.textContent = profileJobInput.value;
   closePopup(editPopup);
 });
 
 buttonAdd.addEventListener("click", () => {
-  nameInputAdd.value = "";
-  linkInputAdd.value = "";
-
   openPopup(addPopup);
 });
 
 const handleAddImgSubmit = (event) => {
   event.preventDefault();
 
-  const name = nameInputAdd.value;
-  const link = linkInputAdd.value;
+  const name = cardNameInput.value;
+  const link = cardLinkInput.value;
 
   const imageName = {
     name,
@@ -73,10 +75,7 @@ const handleAddImgSubmit = (event) => {
   closePopup(addPopup);
 };
 
-addFormImg.addEventListener("submit", handleAddImgSubmit);
-closePopupAddButton.addEventListener("click", () => {
-  closePopup(addPopup);
-});
+cardFormImg.addEventListener("submit", handleAddImgSubmit);
 
 const imageTemplate = document.getElementById("image-template");
 const imageGroup = document.querySelector(".elements__group");
@@ -94,13 +93,10 @@ const createImageElement = (imageData) => {
     openPopup(picturePopup);
     picturePopupImg.src = imageData.link;
     picturePopupCaption.textContent = imageData.name;
+    picturePopupCaption.alt = imageData.name;
   });
 
-  closePopupButtonPicture.addEventListener("click", () => {
-    closePopup(picturePopup);
-  });
-
-  imageName.innerHTML = imageData.name;
+  imageName.textContent = imageData.name;
   photoImage.src = imageData.link;
   photoImage.alt = imageData.name;
 
