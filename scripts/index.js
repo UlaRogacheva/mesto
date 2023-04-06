@@ -70,7 +70,8 @@ const handleAddImgSubmit = (event) => {
     name,
     link,
   };
-
+  cardNameInput.value = "";
+  cardLinkInput.value = "";
   renderImageElement(createImageElement(imageName));
   closePopup(addPopup);
 };
@@ -87,13 +88,12 @@ const createImageElement = (imageData) => {
 
   const imageName = imageElement.querySelector(".element__title");
   const photoImage = imageElement.querySelector(".element__photo");
-  const closePopupButtonPicture = picturePopup.querySelector(".popup__close");
 
   photoImage.addEventListener("click", () => {
     openPopup(picturePopup);
     picturePopupImg.src = imageData.link;
     picturePopupCaption.textContent = imageData.name;
-    picturePopupCaption.alt = imageData.name;
+    picturePopupImg.alt = imageData.name;
   });
 
   imageName.textContent = imageData.name;
