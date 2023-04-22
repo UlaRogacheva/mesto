@@ -32,6 +32,20 @@ const picturePopupCaption = picturePopup.querySelector(
 
 function openPopup(popup) {
   popup.classList.add("popup_open");
+  document.addEventListener("keydown", function closePopupEsc(event) {
+    if (event.key === "Escape") {
+      closePopup(popup);
+      document.removeEventListener("keydown", closePopupEsc);
+    }
+  });
+
+  popup.addEventListener("click", function closePopupOverlay(event) {
+    console.log(event.target, event.currentTarget);
+    if (event.target === event.currentTarget) {
+      closePopup(popup);
+      popup.removeEventListener("click", closePopupOverlay);
+    }
+  });
 }
 
 function closePopup(popup) {
