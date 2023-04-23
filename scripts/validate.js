@@ -60,8 +60,6 @@ function toggleButtonValidity({ submitButtonSelector, ...rest }, form) {
 
 function setSubmitListener(config, form) {
   form.addEventListener("submit", function (event) {
-    form.reset();
-
     toggleButtonValidity(config, form);
   });
 }
